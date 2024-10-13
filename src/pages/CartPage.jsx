@@ -14,10 +14,10 @@ const CartPage = () => {
 
   if (carts.length === 0) {
     return (
-      <div className='flex justify-center items-center'>
+      <div className='flex flex-col justify-center items-center'>
         <img src={shoppingCart} />
         <span> Your Cart is Empty</span>
-        <Link to="/" className='bg-orange-500 p-4 text-white'> Go Shopping Now
+        <Link to="/" className='bg-orange-500 p-4 text-white my-2'> Go Shopping Now
         </Link>
       </div>
     )

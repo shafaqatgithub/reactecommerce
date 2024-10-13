@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 
 const CartModel = ({carts}) => {
-
-
   return (
 
         <div className="absolute right-[-10px] top-[calc(100%+10px)] bg-white w-[360px] shadow-lg border border-gray-200 p-7 transition-opacity duration-300 z-50 h-[460px] overflow-y-scroll">
@@ -20,7 +18,7 @@ const CartModel = ({carts}) => {
                 carts.map(cart => (
                   <div className="flex items-center py-2 border-b border-gray-200" key={cart.id}>
                     <div className="w-16 h-16">
-                      <img src={cart?.thumbnail} alt="" className="w-full h-full object-cover" />
+                      <img src={cart?.images} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-grow text-sm text-gray-800 capitalize">{cart?.title}</div>
                     <div className="text-orange-500 font-semibold text-base">
