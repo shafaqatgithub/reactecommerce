@@ -16,6 +16,12 @@ const Navbar = () => {
   const categories = useSelector(getAllCategories);
   const itemsCount = useSelector(getCartItemsCount);
   const carts = useSelector(getAllCarts);
+
+  const [searchTerm , setSearchTerm] = useState("");
+  const handleSearchTerm = (e) =>{
+     e.preventDefault();
+     setSearchTerm(e.target.value);
+  }
   
   const [isCartModelVisible, setCartModelVisible] = useState(false);
 
@@ -58,10 +64,10 @@ const Navbar = () => {
           <div className='bg-white flex items-center w-full rounded'>
             <input 
               type="text" 
-              className='form-control p-2 w-full rounded-l focus:outline-none' 
-              placeholder='Search your preferred items here' 
+              className='form-control p-2 w-full rounded-l focus:outline-none text-black' 
+              placeholder='Search your preferred items here' onClick={(e) => handleSearchTerm(e)}
             />
-            <Link to='' className='text-black p-2 rounded-r flex items-center justify-center'>
+            <Link to={`search/${searchTerm}`} className='text-black p-2 rounded-r flex items-center justify-center'>
               <FaMagnifyingGlass />
             </Link>
           </div>

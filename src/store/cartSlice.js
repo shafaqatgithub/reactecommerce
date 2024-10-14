@@ -90,13 +90,13 @@ const cartSlice = createSlice ({
                     if(action.payload.type === "INC"){
                         tempQty++;
                         if(tempQty === item.stock) tempQty = item.stock;
-                        tempTotalPrice = tempQty * item.discountedPrice;
+                        tempTotalPrice = tempQty * item.discountPrice;
                     }
 
                     if(action.payload.type === "DEC"){
                         tempQty--;
                         if(tempQty < 1) tempQty = 1;
-                        tempTotalPrice = tempQty * item.discountedPrice;
+                        tempTotalPrice = tempQty * item.discountPrice;
                     }
 
                     return {...item, quantity: tempQty, totalPrice: tempTotalPrice};
