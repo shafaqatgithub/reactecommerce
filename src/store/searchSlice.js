@@ -17,10 +17,34 @@ const searchSlice = createSlice ({
     },
     extraReducers : (builder) => {
         builder
-        .addCase
+        .addCase(fetchAsyncSearchProduct.pending , (state , action) => {
+            state.serachProductStatus = STATUS.LOADING;
+
+        })
+
+        .addCase(fetchAsyncSearchProduct.fulfilled, (state, action) => {
+            state.searchProducts = action.payload;
+            state.serachProductStatus  = STATUS.SUCCEEDED;
+        })
+
+        .addCase(fetchAsyncSearchProduct.rejected, (state , action) => {
+            state.serachProductStatus = STATUS.FAILED;
+        })
+
     }
 })
 
-export const fetchAsyncSearchProduct = createAsyncThunk ('serach-product/ fetch' , async () => {
-    const response = await fetch()
+export const fetchAsyncSearchProduct = createAsyncThunk ('serach-product/ fetch' , async (searchTerm) => {
+    const response = await fetch(`${BASE_URL}/products/search?q=${searchTerm}`);
+    const data = response.json();
+    return data.products
 })
+
+
+export const getAsyncSearchProduct = (state) => state.search.searchProducts
+
+
+export const { clearSearch } = searchSlice.actions;
+
+export const getSearchProductsStatus = (state) => state.search.searchProductsStatus;
+export default searchSlice.reducer;

@@ -56,7 +56,7 @@ const Navbar = () => {
             <span className='text-xl'>
               <FaShoppingBag />
             </span>
-            <span className='ml-2 font-bold'>SnapUp.</span>
+            <span className='ml-2 font-bold'>Sony</span>
           </Link>
         </div>
 

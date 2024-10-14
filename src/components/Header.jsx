@@ -12,8 +12,8 @@ const Header = () => {
           <div className='flex justify-between items-center py-2  text-sm'>
             <div>
                 <ul className='flex items-center justify-center gap-4'>
-                    <li><Link to="/">Today's Deals </Link></li>
-                    <li><Link to="/">Download </Link></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/">About Us</Link></li>
                     <li><Link to="/">Follow Us On </Link></li>
                     
                     <ul className='flex justify-center gap-2'>
