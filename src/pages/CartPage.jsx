@@ -39,7 +39,7 @@ const CartPage = () => {
                 <span className='py-2'>Unit Price</span>
                 <span className='py-2'>Quantity</span>
                 <span className='py-2'>Total Price</span>
-                <span className='py-2'>Actions</span>
+                <span className='py-2 px-4'>Actions</span>
               </div>
               {carts.map((cart, idx) => (
                 <div className='grid grid-cols-6 py-4 border-b' key={cart?.id}>
@@ -47,7 +47,7 @@ const CartPage = () => {
                   <span>{cart?.title}</span>
                   <span>{formatPrice(cart?.discountPrice)}</span>
                   <div className='flex items-center'>
-                    <button type="button" className='px-2 py-1 border' onClick={() => dispatch(toggleCartQty({ id: cart?.id, type: "DEC" }))}>
+                    <button type="button" className='px-2 py-1 border ' onClick={() => dispatch(toggleCartQty({ id: cart?.id, type: "DEC" }))}>
                     <HiMinusSm />
                     </button>
                     <span className='mx-2'>{cart?.quantity}</span>

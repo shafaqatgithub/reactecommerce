@@ -82,7 +82,7 @@ const Navbar = () => {
             <Link to="/cart">
               <FaShoppingCart />
             </Link>
-            <div className='absolute -top-2 -right-2 bg-white text-red text-xs rounded-full w-4 h-4 flex items-center justify-center'>
+            <div className='absolute -top-2 -right-2 bg-white text-red-600 text-xs rounded-full w-4 h-4 flex items-center justify-center'>
               {itemsCount}
             </div>
             {isCartModelVisible && <CartModel carts={carts} />}

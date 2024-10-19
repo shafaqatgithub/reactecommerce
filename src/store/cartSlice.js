@@ -99,7 +99,7 @@ const cartSlice = createSlice ({
                         tempTotalPrice = tempQty * item.discountPrice;
                     }
 
-                    return {...item, quantity: tempQty, totalPrice: tempTotalPrice};
+                    return {...item, quantity: tempQty, totalPrice: tempTotalPrice};// checkout this line
                 } else {
                     return item;
                 }

@@ -35,7 +35,7 @@ const Header = () => {
             <div>
                 <ul className='flex gap-4'>
                     <li>Help?</li>
-                    <li><Link to='signup'> Register </Link></li>
+                    <li><Link to='signup'> SignUp</Link></li>
                     
                     <li><Link to='login'> Login </Link></li>
                 </ul>
