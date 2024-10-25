@@ -29,9 +29,12 @@ function App() {
         <Route path="/product/:id" element={<SingleProduct/>}/>
         <Route path="/category/:category" element={<ProductCategory/>} />
         <Route path="/cart" element={<CartPage/>} />
+
         <Route path="/search/:searchTerm" element={<SearchPage/>} />
+
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
+        
       </Routes>
 
       <Footer/>

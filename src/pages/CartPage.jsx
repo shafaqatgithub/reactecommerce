@@ -39,7 +39,7 @@ const CartPage = () => {
                 <span className='py-2'>Unit Price</span>
                 <span className='py-2'>Quantity</span>
                 <span className='py-2'>Total Price</span>
-                <span className='py-2 px-4'>Actions</span>
+                <span className='py-2 '>Actions</span>
               </div>
               {carts.map((cart, idx) => (
                 <div className='grid grid-cols-6 py-4 border-b' key={cart?.id}>

@@ -4,7 +4,8 @@ import { STATUS } from "../utils/status";
 
 const initialState = {
     searchProducts : [],
-    serachProductStatus : STATUS.IDLE
+    searchProductStatus : STATUS.IDLE, 
+
 }
  
 const searchSlice = createSlice ({
@@ -13,38 +14,40 @@ const searchSlice = createSlice ({
     reducers : {
         clearSearch : (state , action) => {
             state.searchProducts = []
-        }
+        },
+      
     },
     extraReducers : (builder) => {
         builder
         .addCase(fetchAsyncSearchProduct.pending , (state , action) => {
-            state.serachProductStatus = STATUS.LOADING;
+            state.searchProductStatus = STATUS.LOADING;
 
         })
 
         .addCase(fetchAsyncSearchProduct.fulfilled, (state, action) => {
             state.searchProducts = action.payload;
-            state.serachProductStatus  = STATUS.SUCCEEDED;
+            state.searchProductStatus  = STATUS.SUCCEEDED;
         })
 
         .addCase(fetchAsyncSearchProduct.rejected, (state , action) => {
-            state.serachProductStatus = STATUS.FAILED;
+            state.searchProductStatus = STATUS.FAILED;
         })
 
     }
 })
 
-export const fetchAsyncSearchProduct = createAsyncThunk ('serach-product/ fetch' , async (searchTerm) => {
+export const fetchAsyncSearchProduct = createAsyncThunk ('serach-product/fetch' , async (searchTerm) => {
     const response = await fetch(`${BASE_URL}/products/search?q=${searchTerm}`);
-    const data = response.json();
-    return data.products
+    const data = await response.json();
+    console.log(data)
+    return data.products;
 })
 
 
 export const getAsyncSearchProduct = (state) => state.search.searchProducts
 
-
-export const { clearSearch } = searchSlice.actions;
+export const {setSearchTerm} = searchSlice.actions;
+export const { clearSearch} = searchSlice.actions;
 
 export const getSearchProductsStatus = (state) => state.search.searchProductsStatus;
 export default searchSlice.reducer;

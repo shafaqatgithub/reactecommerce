@@ -3,7 +3,7 @@ import { FiMenu } from "react-icons/fi";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import { getSidebarStatus, setSidebarOn, setSidebarOff } from '../store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCategories } from '../store/categorySlice';
@@ -16,13 +16,19 @@ const Navbar = () => {
   const categories = useSelector(getAllCategories);
   const itemsCount = useSelector(getCartItemsCount);
   const carts = useSelector(getAllCarts);
+  const navigate = useNavigate(); 
 
-  const [searchTerm , setSearchTerm] = useState("");
-  const handleSearchTerm = (e) =>{
-     e.preventDefault();
-     setSearchTerm(e.target.value);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // const handleSearchTerm = (e) =>{
+  //    e.preventDefault();
+  //    setSearchTerm(e.target.value);
+  // }
+
+  const handleSearchTerm = (e) => {
+    setSearchTerm(e.target.value);
   }
-  
+
   const [isCartModelVisible, setCartModelVisible] = useState(false);
 
   useEffect(() => {
@@ -45,9 +51,9 @@ const Navbar = () => {
     <nav className='flex flex-col'>
       <div className='flex items-center justify-between py-2'>
         <div className='flex items-center'>
-          <button 
-            type="button" 
-            className='text-white' 
+          <button
+            type="button"
+            className='text-white'
             onClick={toggleSidebar}
           >
             <FiMenu />
@@ -62,19 +68,20 @@ const Navbar = () => {
 
         <div className='flex-grow mx-4'>
           <div className='bg-white flex items-center w-full rounded'>
-            <input 
-              type="text" 
-              className='form-control p-2 w-full rounded-l focus:outline-none text-black' 
-              placeholder='Search your preferred items here' onClick={(e) => handleSearchTerm(e)}
+            <input
+              type="text"
+              className='form-control p-2 w-full rounded-l focus:outline-none text-black'
+              placeholder='Search your preferred items here' onChange={handleSearchTerm}
             />
-            <Link to={`search/${searchTerm}`} className='text-black p-2 rounded-r flex items-center justify-center'>
+            <Link to={`/search/${searchTerm}`} className='text-black p-2 rounded-r flex items-center justify-center'>
               <FaMagnifyingGlass />
             </Link>
+            
           </div>
         </div>
 
         <div className='flex items-center'>
-          <div 
+          <div
             className='relative flex items-center text-white'
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
